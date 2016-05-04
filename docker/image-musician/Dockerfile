@@ -1,6 +1,6 @@
 FROM node:latest
 
-MAINTAINER Adriano Ruberto
+MAINTAINER Adriano Ruberto & Matthieu Villard
 
 EXPOSE 9907
 
