@@ -21,7 +21,7 @@ if(!sound){
 
 const soundBuffer = new Buffer(sound);
 
-console.log(soundBuffer);
+console.log(soundBuffer.toString());
 
 function play() {
 

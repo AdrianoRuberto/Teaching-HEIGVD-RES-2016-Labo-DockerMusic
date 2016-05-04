@@ -6,4 +6,4 @@ EXPOSE 9907
 
 COPY src /
 
-CMD node /musician.js
+ENTRYPOINT ["node", "/musician.js"]
