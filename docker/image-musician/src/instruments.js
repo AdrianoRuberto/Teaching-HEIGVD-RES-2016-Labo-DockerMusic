@@ -12,13 +12,13 @@ exports.Instrument = function (name, sound){
 /*
  * Let's define a javascript enum for the instruments.
  */
-exports.Instruments = [
-    new exports.Instrument("piano", "ti-ta-ti"),
-    new exports.Instrument("trumpet", "pouet"),
-    new exports.Instrument("flute", "trulu"),
-    new exports.Instrument("flute", "trulu"),
-    new exports.Instrument("drum", "boum-boum")
-];
+exports.Instruments = {
+    piano:"ti-ta-ti",
+    trumpet:"pouet",
+    flute:"trulu",
+    violin:"gzi-gzi",
+    drum:"boum-boum"
+};
 
 exports.findBySound = function (sound) {
     for(var i = 0; i < exports.Instruments.length; i++){
@@ -26,4 +26,4 @@ exports.findBySound = function (sound) {
             return exports.Instruments[i];
     }
     return null;
-}
+};

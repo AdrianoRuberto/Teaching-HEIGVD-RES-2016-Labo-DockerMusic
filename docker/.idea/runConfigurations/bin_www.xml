@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="bin\www" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" path-to-js-file="image-musician/src/musician.js" application-parameters="piano" working-dir="$PROJECT_DIR$">
+  <configuration default="false" name="bin\www" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" path-to-js-file="image-musician/src/musician.js" application-parameters="&quot;piano&quot;" working-dir="$PROJECT_DIR$">
     <envs>
       <env name="DEBUG" value="docker:*" />
     </envs>

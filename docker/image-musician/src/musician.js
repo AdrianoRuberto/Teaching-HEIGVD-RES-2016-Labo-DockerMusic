@@ -40,9 +40,14 @@ function Musician(instrument) {
 /*
  * get a random instrument
  */
-var instrument = instruments.Instruments[Math.floor((Math.random() * instruments.Instruments.length))]
+const instrument = process.argv[2];
+const sound = instrument && instruments.Instruments[instrument];
+if(!sound){
+	console.log("ERROR - Wrong instrument");
+	process.exit(1);
+}
 
 /*
- * Let's create a new mucisian
+ * Let's create a new musician
  */
 var m = new Musician(instrument);
