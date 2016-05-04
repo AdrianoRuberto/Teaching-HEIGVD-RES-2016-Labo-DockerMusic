@@ -2,7 +2,7 @@ FROM node:latest
 
 MAINTAINER Adriano Ruberto
 
-EXPOSE 2222
+EXPOSE 9907
 
 COPY src /
 
