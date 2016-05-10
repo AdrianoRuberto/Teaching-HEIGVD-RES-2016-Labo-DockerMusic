@@ -2,7 +2,7 @@ FROM node:latest
 
 MAINTAINER Adriano Ruberto & Matthieu Villard
 
-EXPOSE 9907
+EXPOSE 2205
 
 COPY src /
 

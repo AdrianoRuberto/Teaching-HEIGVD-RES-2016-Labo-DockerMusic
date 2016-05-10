@@ -11,10 +11,10 @@ exports.Musician = function (uuid, instrument) {
 }
 
 exports.play = function (play) {
+    now = Date.now();
     var musician = findMusician(play.uuid);
     if(musician == null){
-        musicians.push(play.uuid, instruments.findBySound(play.sound));
-        console.log(play.uuid + " started emitting : " + play.sound);
+        musicians.push(new exports.Musician(play.uuid, instruments.findBySound(play.sound)));
     }
     else
         musician.lastActivity = Date.now();
@@ -22,10 +22,11 @@ exports.play = function (play) {
 }
 
 exports.print = function () {
+    now = Date.now();
     var availables = [];
     for(var i = 0; i < musicians.length; i++){
-        if(Date.now() - musicians[i].lastActivity > 5000) {
-            array.splice(i, 1);
+        if(now - musicians[i].lastActivity > 5000) {
+            musicians.splice(i, 1);
         }
         else{
             var musician = {
@@ -49,11 +50,11 @@ function findMusician(uuid) {
 
 function refreshMusicians() {
     for(var i = 0; i < musicians.length; i++){
-        if(Date.now() - musicians[i].lastActivity > 5000) {
-            console.log(musicians[i].uuid + " stopped emitting : " + musicians[i].instrument.sound);
-            array.splice(i, 1);
+        if(now - musicians[i].lastActivity > 5000) {
+            musicians.splice(i, 1);
         }
     }
 }
 
+var now;
 var musicians = [];

@@ -24,15 +24,20 @@ s.bind(protocol.PROTOCOL_PORT, function() {
  * This call back is invoked when a new datagram has arrived.
  */
 s.on('message', function(msg, source) {
-    console.log("bonjour");
     musicians.play(JSON.parse(msg));
 });
 
 var	server = net.createServer();
 
+//server.on('listening',	callbackFunctionToCallWhenSocketIsBound);
 server.on('connection', request);
 
 server.listen(2205);
+
+/*function callbackFunctionToCallWhenSocketIsBound()	{
+    console.log("The	socket	is	bound	and	listening");
+    console.log("Socket	value:	%j",	server.address());
+}*/
 
 function request(socket) {
     socket.write(musicians.print());

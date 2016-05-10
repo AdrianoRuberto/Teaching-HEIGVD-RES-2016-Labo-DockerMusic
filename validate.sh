@@ -27,3 +27,4 @@ docker run -d --name res_musician_1 res/musician piano
 docker run -d --name res_musician_2 res/musician flute
 docker run -d --name res_musician_3 res/musician flute
 
+pause

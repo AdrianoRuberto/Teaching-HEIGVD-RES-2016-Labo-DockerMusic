@@ -43,8 +43,8 @@ function Musician(instrument) {
 const instrument = process.argv[2];
 const sound = instrument && instruments.Instruments[instrument];
 if(!sound){
-	console.log("ERROR - Wrong instrument");
-	process.exit(1);
+    console.log("ERROR - Wrong instrument");
+    process.exit(1);
 }
 
 /*
