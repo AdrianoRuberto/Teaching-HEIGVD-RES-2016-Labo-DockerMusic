@@ -1,18 +1,20 @@
 /**
- * Created by matthieu.villard on 04.05.2016.
+ * Matthieu Villard & Adriano Ruberto
+ * 11.05.2016
+ */
+
+/**
+ * Module dependencies.
  */
 var protocol = require('./music-protocol');
-
-/*
- * We use a standard Node.js module to work with UDP
- */
 var dgram = require('dgram');
 var net = require('net');
 var musicians = require('./musicians');
 
-/*
- * Let's create a datagram socket. We will use it to listen for datagrams published in the
- * multicast group by thermometers and containing measures
+/**
+ * Create a socket, which is used to listen for datagrams published in the multicast group
+ * Each datagram is a sound played by a musician
+ *
  */
 var s = dgram.createSocket('udp4');
 s.bind(protocol.PROTOCOL_PORT, function() {
@@ -24,22 +26,26 @@ s.bind(protocol.PROTOCOL_PORT, function() {
  * This call back is invoked when a new datagram has arrived.
  */
 s.on('message', function(msg, source) {
-    musicians.play(JSON.parse(msg));
+    musicians.play(msg);
 });
 
-var	server = net.createServer();
 
-//server.on('listening',	callbackFunctionToCallWhenSocketIsBound);
-server.on('connection', request);
+/**
+ * Let's define a socket for tcp requests
+ *
+ */
+var	server = net.createServer();
 
 server.listen(2205);
 
-/*function callbackFunctionToCallWhenSocketIsBound()	{
-    console.log("The	socket	is	bound	and	listening");
-    console.log("Socket	value:	%j",	server.address());
-}*/
+server.on('connection', request);
 
+/**
+ * Answer a tcp request, sending active musicians
+ *
+ * @param socket
+ */
 function request(socket) {
     socket.write(musicians.print());
-    socket.pipe(socket);
+    socket.destroy();
 }

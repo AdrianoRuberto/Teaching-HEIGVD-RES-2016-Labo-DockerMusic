@@ -1,6 +1,8 @@
 /**
- * Created by matthieu.villard on 04.05.2016.
+ * Matthieu Villard & Adriano Ruberto
+ * 11.05.2016
  */
+
 /*
  * Let's define a javascript class for the instruments.
  */
@@ -10,22 +12,23 @@ exports.Instrument = function (name, sound){
 };
 
 /*
- * Let's define a javascript enum for the instruments.
+ * Let's define a javascript enum for the availables instruments.
  */
-exports.Instruments = [
-    new exports.Instrument("piano", "ti-ta-ti"),
-    new exports.Instrument("trumpet", "pouet"),
-    new exports.Instrument("flute", "trulu"),
-    new exports.Instrument("flute", "trulu"),
-    new exports.Instrument("drum", "boum-boum")
-];
+exports.Instruments = {
+    piano: new exports.Instrument("piano", "ti-ta-ti"),
+    trumpet: new exports.Instrument("trumpet", "pouet"),
+    flute: new exports.Instrument("flute", "trulu"),
+    violin: new exports.Instrument("violin", "gzi-gzi"),
+    drum:new exports.Instrument("drum", "boum-boum")
+};
 
 exports.findBySound = function (sound) {
-    for(var i = 0; i < exports.Instruments.length; i++){
-        if(exports.Instruments[i].sound == sound)
-            return exports.Instruments[i];
-    }
-    return null;
+    var instrumentKey = Object.keys(exports.Instruments).filter(function(key) {
+        return exports.Instruments[key].sound == sound;
+    }).pop();
+    if(instrumentKey == undefined)
+        return null;
+    return exports.Instruments[instrumentKey];
 }
 
 

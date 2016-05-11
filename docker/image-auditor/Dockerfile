@@ -1,6 +1,8 @@
-FROM node:latest
+FROM node:4.3.1
 
 MAINTAINER Adriano Ruberto & Matthieu Villard
+
+RUN npm install moment
 
 EXPOSE 2205
 
